@@ -19,7 +19,11 @@
                     @Html.ActionLink("About", "About", "Home")
                 </li>
                 <li>
-                    @Html.ActionLink("Multi Table", "Experiment", "Home")
+                    @*@Html.ActionLink("Multi Table", "Experiment", "Home")*@
+                    <a asp-action="Experiment" asp-controller="Home">Multi Table</a>
+                </li>
+                <li>
+                    <a asp-action="ContactUs" asp-controller="Home">Contact Us</a>
                 </li>
             </ul>
         </nav>
