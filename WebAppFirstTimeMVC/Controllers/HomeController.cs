@@ -1,15 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppFirstTimeMVC.Models;
 
 namespace WebAppFirstTimeMVC.Controllers
 {
     public class HomeController : Controller
     {
-        static List<string[]> contactList = new List<string[]>();
+        IMessagesService _messagesService;
 
+        public HomeController()
+        {
+            _messagesService = new FileMessagesService();
+        }
 
         public IActionResult Index()
         {
@@ -35,11 +41,34 @@ namespace WebAppFirstTimeMVC.Controllers
         [HttpPost]
         public IActionResult ContactUs(string name, string email, string message)
         {
-            contactList.Add(new string[]{name, email, message});
+            if (
+                string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(message)
+                )
+            {
+                ViewBag.Msg = "You need to fill in Name, Email and Message!";
+                return View();
+            }
 
-            ViewBag.ContactList = contactList;
+            if (_messagesService.Save(name, email, message))
+            {
+                ViewBag.ContactList = _messagesService.GetAll();
 
-            return View("ContactList");
+                return View("ContactList");
+            }
+
+            ViewBag.Msg = "Somthing has gone wronge";
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ContactList()
+        {
+
+            ViewBag.ContactList = _messagesService.GetAll();
+
+            return View();
         }
     }
 }
