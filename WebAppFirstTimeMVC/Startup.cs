@@ -16,6 +16,15 @@ namespace WebAppFirstTimeMVC
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddMvc();
             //services.AddControllersWithViews();
         }
@@ -32,6 +41,8 @@ namespace WebAppFirstTimeMVC
             app.UseStaticFiles();//for files inside the wwwroot folder
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
