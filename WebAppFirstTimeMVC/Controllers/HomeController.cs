@@ -38,7 +38,7 @@ namespace WebAppFirstTimeMVC.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost]//only client post request can call this one
         public IActionResult ContactUs(string name, string email, string message)
         {
             if (
@@ -53,9 +53,10 @@ namespace WebAppFirstTimeMVC.Controllers
 
             if (_messagesService.Save(name, email, message))
             {
-                ViewBag.ContactList = _messagesService.GetAll();
+                //ViewBag.ContactList = _messagesService.GetAll();
 
-                return View("ContactList");
+                //return RedirectToAction("ContactList");
+                return RedirectToAction(nameof(ContactList));
             }
 
             ViewBag.Msg = "Somthing has gone wronge";

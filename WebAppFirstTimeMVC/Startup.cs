@@ -37,14 +37,16 @@ namespace WebAppFirstTimeMVC
             {
 
                 endpoints.MapControllerRoute(
+                    name: "specialForContactList",
+                    pattern: "Intrest-list",
+                    defaults: new { controller = "Home", action = "ContactList" }
+                );
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
 
-                //endpoints.MapGet("/", async context =>
-                //{
-                //    await context.Response.WriteAsync("Hello World!");
-                //});
             });
         }
     }
