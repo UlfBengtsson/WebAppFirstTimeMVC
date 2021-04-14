@@ -25,6 +25,8 @@ namespace WebAppFirstTimeMVC
                 options.Cookie.IsEssential = true;
             });
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//this is needed to be added for reading session inside views
+
             services.AddMvc();
             //services.AddControllersWithViews();
         }

@@ -5,6 +5,13 @@
 
 <h1>Show Cookies</h1>
 
-<p>Current cookie Text: @ViewBag.CookieMsg</p>
+@if (Context.Request.Cookies["CookieName"] != null)
+{
+    <p>Current cookie Text: @Context.Request.Cookies["CookieName"].ToString()</p>
+}
+else
+{
+    <p>no cookie found.</p>
+}
 
 <a asp-action="AddCookie">Add Cookie</a>

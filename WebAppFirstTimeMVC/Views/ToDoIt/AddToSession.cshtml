@@ -1,11 +1,12 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     ViewData["Title"] = "AddToSession";
 }
 
 <h1>AddToSession</h1>
 
-<p>currently inside the Session Msg: @ViewBag.Msg</p>
+<p>currently inside the Session Msg: @HttpContextAccessor.HttpContext.Session.GetString("Msg")</p>
 
 <form method="post">
     <input type="text" name="textToAdd" value="" />

@@ -17,7 +17,7 @@ namespace WebAppFirstTimeMVC.Controllers
         [HttpGet]
         public IActionResult AddToSession()
         {
-            ViewBag.Msg = HttpContext.Session.GetString("Msg");
+            //ViewBag.Msg = HttpContext.Session.GetString("Msg");// Have move the reading of session into the view.(needed to add a service to make this work)
             return View();
         }
         [HttpPost]
@@ -30,7 +30,7 @@ namespace WebAppFirstTimeMVC.Controllers
 
         public IActionResult ShowCookies()
         {
-            ViewBag.CookieMsg = Request.Cookies["CookieName"];
+            //ViewBag.CookieMsg = Request.Cookies["CookieName"];// Have move the reading of cookie into the view.
             return View();
         }
 
