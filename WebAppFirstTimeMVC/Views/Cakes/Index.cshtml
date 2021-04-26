@@ -1,0 +1,26 @@
+﻿@model List<Cake>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cake Index</h1>
+
+<table id="cakeTable">
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="@("cake" + item.Id)">
+            <td>@item.Name</td>
+            <td>@item.Amount</td>
+            <td>
+                <a asp-action="Detailes" asp-route-id="@item.Id">Detailes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" onclick="deleteCake(this, event)">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<script src="~/js/MyJS.js"></script>

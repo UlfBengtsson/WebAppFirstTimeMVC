@@ -30,3 +30,30 @@ code {
 td {
     border: 1px solid black;
 }
+
+#cakeTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #cakeTable td, #cakeTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #cakeTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #cakeTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #cakeTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }

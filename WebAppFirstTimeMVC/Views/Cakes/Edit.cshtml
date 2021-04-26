@@ -1,0 +1,14 @@
+﻿@model EditCake
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <input asp-for="CreateCake.Name" placeholder="Name" />
+    <input asp-for="CreateCake.Amount" placeholder="Amount" />
+    <textarea asp-for="CreateCake.Detailes" placeholder="Detailes" ></textarea>
+
+    <button>Save</button>
+</form>

@@ -1,0 +1,19 @@
+﻿@model Cake
+@{
+    ViewData["Title"] = "Detailes";
+}
+
+<h1>Detailes</h1>
+
+<dl>
+    <dt>Name:</dt>
+    <dd>@Model.Name</dd>
+    <dt>Amount:</dt>
+    <dd>@Model.Amount</dd>
+    <dt>Detailes:</dt>
+    <dd>@Model.Detailes</dd>
+
+    <dt>Actions:</dt>
+    <dd><a asp-action="Edit" asp-route-id="@Model.Id" >Edit</a></dd>
+    <dd><a asp-action="Index">Back to Index</a></dd>
+</dl>
