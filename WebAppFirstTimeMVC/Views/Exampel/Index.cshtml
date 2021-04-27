@@ -1,0 +1,41 @@
+﻿@model ExampelViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>ExampelViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SomeText" class="control-label"></label>
+                <input asp-for="SomeText" class="form-control" />
+                <span asp-validation-for="SomeText" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                @foreach (var item in Enum.GetValues(typeof(Gender)))
+                {
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" value="@item" name="GenderStatus" @(item.Equals(Model.GenderStatus) ? "checked" : "") class="form-check-input" >@item
+                        </label>
+                    </div>
+                }
+                <span asp-validation-for="GenderStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

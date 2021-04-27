@@ -4,49 +4,61 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="~/css/MyStyle.css" rel="stylesheet" />
 </head>
 <body>
     <header>
         <h1>Logo</h1>
-        <nav>
-            <ul>
-                <li>
-                    @Html.ActionLink("Index", "Index", "Home")
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    @Html.ActionLink("Index", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li>
-                    @Html.ActionLink("About", "About", "Home")
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li>
                     @*@Html.ActionLink("Multi Table", "Experiment", "Home")*@
-                    <a asp-action="Experiment" asp-controller="Home">Multi Table</a>
+                    <a asp-action="Experiment" asp-controller="Home" class="nav-link">Multi Table</a>
                 </li>
                 <li>
-                    <a asp-action="ContactUs" asp-controller="Home">Contact Us</a>
+                    <a asp-action="ContactUs" asp-controller="Home" class="nav-link">Contact Us</a>
                 </li>
                 <li>
-                    <a asp-action="ContactList" asp-controller="Home">Contact List</a>
+                    <a asp-action="ContactList" asp-controller="Home" class="nav-link">Contact List</a>
                 </li>
                 <li>
-                    <a asp-action="AddToSession" asp-controller="ToDoIt">Session Message</a>
+                    <a asp-action="AddToSession" asp-controller="ToDoIt" class="nav-link">Session Message</a>
                 </li>
                 <li>
-                    <a asp-action="ShowCookies" asp-controller="ToDoIt">Cookies!!!</a>
+                    <a asp-action="ShowCookies" asp-controller="ToDoIt" class="nav-link">Cookies!!!</a>
                 </li>
                 <li>
-                    <a asp-action="Index" asp-controller="Cakes">Cakes</a>
+                    <a asp-action="Index" asp-controller="Cakes" class="nav-link">Cakes</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Exampel" class="nav-link">Exampels</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <div>
+    <div class="container">
         @RenderBody()
     </div>
 
-    <footer>
+    <footer class="fixed-bottom">
         <p>&copy;Lexicon</p>
     </footer>
 </body>
