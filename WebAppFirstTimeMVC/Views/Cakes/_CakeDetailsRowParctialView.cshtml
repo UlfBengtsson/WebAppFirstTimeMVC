@@ -1,0 +1,18 @@
+﻿@model Cake
+
+<tr id="@("cake" + Model.Id)">
+    <td colspan="3">
+        <dl>
+            <dt>Name:</dt>
+            <dd>@Model.Name</dd>
+            <dt>Amount:</dt>
+            <dd>@Model.Amount</dd>
+            <dt>Detailes:</dt>
+            <dd>@Model.Detailes</dd>
+
+            <dt>Actions:</dt>
+            <dd><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></dd>
+            <dd><a asp-action="PartcialCakeTableRow" onclick="closeDetailsCake(event, @Model.Id)" >Close Deatial</a></dd>
+        </dl>
+    </td>
+</tr>

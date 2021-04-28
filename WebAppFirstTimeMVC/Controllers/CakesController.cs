@@ -24,6 +24,25 @@ namespace WebAppFirstTimeMVC.Controllers
             return PartialView("_CakeTableParctialView", _cakeService.FindByAmount(minAmount));
         }
 
+        [HttpPost]
+        public IActionResult PartcialDetails(int id)
+        {
+            Cake cake = _cakeService.FindbyId(id);
+
+            if (cake == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("_CakeDetailsRowParctialView", cake);
+        }
+
+        [HttpPost]
+        public IActionResult PartcialCakeTableRow(int id)
+        {
+            return PartialView("_CakeTableRowParctialView", _cakeService.FindbyId(id));
+        }
+
         public IActionResult Detailes(int id)
         {
             Cake cake = _cakeService.FindbyId(id);
@@ -80,12 +99,12 @@ namespace WebAppFirstTimeMVC.Controllers
 
             if (cake == null)
             {
-                return NotFound();
+                return NotFound();//404
             }
 
             if (_cakeService.Remove(id))
             {
-                return Ok("cake" + id);
+                return Ok("cake" + id);//200
             }
 
             return BadRequest();

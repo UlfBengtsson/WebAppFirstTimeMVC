@@ -9,15 +9,56 @@ function filterbyAmount(event) {
     var formUrl = event.target.action;
     console.log("formUrl", formUrl);
 
-    $.get(formUrl + "?minAmount=" + inputValue , function (data, status) {
+    $.get(formUrl + "?minAmount=" + inputValue, function (data, status) {
         console.log("Data: " + data + "\nStatus: " + status);
 
         $("#cakeTable").replaceWith(data);
     });
 }
 
+function detailsCake(event, id) {
+    event.preventDefault();
+    console.log("OnDetials Event: ", event);
 
-function deleteCake(element,event) {
+    console.log("id:", id);
+
+    var anchorUrl = event.target.href;
+    console.log("anchorUrl", anchorUrl);
+
+    $.post(anchorUrl,
+        {
+            id: id
+        },
+        function (data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+
+            $("#cake" + id).replaceWith(data);
+        }
+    );
+}
+
+function closeDetailsCake(event, id) {
+    event.preventDefault();
+    console.log("OnCloseDetials Event: ", event);
+
+    console.log("id:", id);
+
+    var anchorUrl = event.target.href;
+    console.log("anchorUrl", anchorUrl);
+
+    $.post(anchorUrl,
+        {
+            id: id
+        },
+        function (data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+
+            $("#cake" + id).replaceWith(data);
+        }
+    );
+}
+
+function deleteCake(element, event) {
     //console.log(event);
     //console.log(element);
     event.preventDefault();
