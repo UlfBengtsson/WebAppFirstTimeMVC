@@ -5,7 +5,7 @@
 
 <h1>Cakes Index</h1>
 
-<form asp-action="AmountFilterCakes" method="get">
+<form asp-action="AmountFilterCakes" method="get" onsubmit="filterbyAmount(event)" >
     <input type="number" name="minAmount" />
     <input type="submit" value="Set minimal amount" />
 </form>
@@ -13,4 +13,4 @@
 <partial name="_CakeTableParctialView" model="Model" />
 
 
-<script src="~/js/MyJS.js"></script>
+<script src="~/js/MyJS.js" asp-append-version="true" ></script>

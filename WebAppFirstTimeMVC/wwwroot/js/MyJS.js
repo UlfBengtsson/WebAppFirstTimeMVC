@@ -1,4 +1,21 @@
 ﻿
+function filterbyAmount(event) {
+    event.preventDefault();
+    console.log("OnSubmit Event: ", event);
+
+    var inputValue = event.target[0].value;
+    console.log("inputValue:", inputValue);
+
+    var formUrl = event.target.action;
+    console.log("formUrl", formUrl);
+
+    $.get(formUrl + "?minAmount=" + inputValue , function (data, status) {
+        console.log("Data: " + data + "\nStatus: " + status);
+
+        $("#cakeTable").replaceWith(data);
+    });
+}
+
 
 function deleteCake(element,event) {
     //console.log(event);
