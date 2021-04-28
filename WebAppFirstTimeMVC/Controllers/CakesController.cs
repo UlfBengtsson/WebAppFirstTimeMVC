@@ -18,6 +18,12 @@ namespace WebAppFirstTimeMVC.Controllers
             return View(_cakeService.FindAll());
         }
 
+        [HttpGet]
+        public IActionResult AmountFilterCakes(int minAmount)
+        {
+            return PartialView("_CakeTableParctialView", _cakeService.FindByAmount(minAmount));
+        }
+
         public IActionResult Detailes(int id)
         {
             Cake cake = _cakeService.FindbyId(id);

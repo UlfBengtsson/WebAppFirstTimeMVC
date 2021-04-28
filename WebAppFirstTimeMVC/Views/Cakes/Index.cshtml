@@ -3,24 +3,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Cake Index</h1>
+<h1>Cakes Index</h1>
 
-<table id="cakeTable">
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Action</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr id="@("cake" + item.Id)">
-            <td>@item.Name</td>
-            <td>@item.Amount</td>
-            <td>
-                <a asp-action="Detailes" asp-route-id="@item.Id">Detailes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" onclick="deleteCake(this, event)">Delete</a>
-            </td>
-        </tr>
-    }
-</table>
+<form asp-action="AmountFilterCakes" method="get">
+    <input type="number" name="minAmount" />
+    <input type="submit" value="Set minimal amount" />
+</form>
+
+<partial name="_CakeTableParctialView" model="Model" />
+
+
 <script src="~/js/MyJS.js"></script>

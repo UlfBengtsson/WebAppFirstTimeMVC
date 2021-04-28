@@ -1,0 +1,10 @@
+﻿@model Cake
+
+<tr id="@("cake" + Model.Id)">
+    <td>@Model.Name</td>
+    <td>@Model.Amount</td>
+    <td>
+        <a asp-action="Detailes" asp-route-id="@Model.Id">Detailes</a> |
+        <a asp-action="Delete" asp-route-id="@Model.Id" onclick="deleteCake(this, event)">Delete</a>
+    </td>
+</tr>

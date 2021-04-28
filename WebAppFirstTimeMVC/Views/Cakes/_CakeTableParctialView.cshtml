@@ -1,0 +1,13 @@
+﻿@model List<Cake>
+
+<table id="cakeTable">
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <partial name="_CakeTableRowParctialView" model="item" />
+    }
+</table>
